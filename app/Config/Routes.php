@@ -33,11 +33,21 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/hello', 'SelamatDatang::hal_awal');
-$routes->get('/login', 'SelamatDatang::beranda_login');
 $routes->post('/login', 'Login::cekLogin');
 $routes->get('/daftar-member', 'SelamatDatang::daftar_member');
+$routes->get('/beranda', 'SelamatDatang::hal_beranda', ['filter' => 'auth']);
+$routes->get('/login', 'SelamatDatang::beranda_login', ['filter' => 'autoin']);
+$routes->get('/logout', function () {
+    Services::session()->destroy();
+    return redirect()->to('/login');
+});
 
-
+$routes->get('/pengguna-list', 'PenggunaController_12200926::index', ['filter'=>'auth']);  
+$routes->get('/pengguna', 'PenggunaController_12200926::form', ['filter'=>'auth']);
+$routes->get('/pengguna/(:num)', 'PenggunaController_12200926::edit/$1', ['filter'=>'auth']);
+$routes->post('/pengguna', 'PenggunaController_12200926::simpan', ['filter'=>'auth']);  
+$routes->patch('/pengguna', 'PenggunaController_12200926::patch', ['filter'=>'auth']);
+$routes->delete('/pengguna', 'PenggunaController_12200926::delete', ['filter'=>'auth']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

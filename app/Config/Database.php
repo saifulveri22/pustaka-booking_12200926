@@ -23,19 +23,19 @@ class Database extends Config
      *
      * @var string
      */
-    public $defaultGroup = 'default';
+    public $defaultGroup = 'koneksiku';
 
     /**
      * The default database connection.
      *
      * @var array
      */
-    public $default = [
+    public $koneksiku = [
         'DSN'      => '',
         'hostname' => 'localhost',
-        'username' => '',
+        'username' => 'root',
         'password' => '',
-        'database' => '',
+        'database' => 'db_pustaka_booking_12200926',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
@@ -62,7 +62,7 @@ class Database extends Config
         'username' => '',
         'password' => '',
         'database' => ':memory:',
-        'DBDriver' => 'SQLite3',
+        'DBDriver' => 'MySQLi',
         'DBPrefix' => 'db_',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS
         'pConnect' => false,
         'DBDebug'  => (ENVIRONMENT !== 'production'),
